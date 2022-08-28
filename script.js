@@ -30,20 +30,27 @@ function newElement() {
 
     //Чистим поле input
     document.getElementById('myInput').value = "";
+
+    //Делаем кнопку для удаления delete last
+    // lastbt(li);
 }
-
-
+    //делаем кнопки delete all и delete last
+let deleteLastBtn = document.querySelector('.deleteLastBtn');
 let deleteAllbtn = document.querySelector('.deleteAllBtn');
 
 let task = document.querySelector('.spisok')
+let lastChild = task.lastElementChild;
 
 function myFunction() {
    return task.innerHTML = ''; 
-
+}
+function lastbt() {
+    return lastChild.style.display = 'none';
 }
 
 
 deleteAllbtn.addEventListener('click', myFunction);
+deleteLastBtn.addEventListener('click', lastbt);
 
 
 function createCloseButton(myNodelist) {
@@ -57,3 +64,34 @@ function createCloseButton(myNodelist) {
             div.style.display = "none";
         }
 }
+// Добавляем эластичный поиск по элементам списка
+document.querySelector('#elastic').oninput = function () {
+    let val = this.value.trim();
+    let elasticItems = document.querySelectorAll('.spisok li');
+    if (val != ''){
+        elasticItems.forEach(function(elem){
+            if (elem.innerText.search(val) == -1){
+                elem.classList.add('hide');
+                elem.innerHTML = elem.innerText;
+            }
+            else {
+                elem.classList.remove('hide');
+                let str = elem.innerText;
+                elem.innerHTML = insertMark(str,elem.innerText.search(val), val.length);
+            }
+        })
+    }
+    else {
+        elasticItems.forEach(function(elem){
+            elem.classList.remove('hide');
+            elem.innerHTML = elem.innerText;
+            });
+    }
+}
+
+// прикручиваем к поиску цветовое выделение
+function insertMark(string,pos,len){
+    return string.slice(0, pos)+ '<mark>'+string.slice(pos, pos+len)+'</mark>'+string.slice(pos+len);
+}
+
+

@@ -72,18 +72,29 @@ ul li.checked::before {
     clear: both;
 }
 
-input{
+#myInput{
     border: none;
-    width: 800px;
+    width: 1000px;
     background: #d9d9d9;
     color: #555;
-    font-size: 25px;
+    font-size: 25px; 
+}
+
+#elastic{
+    display: flex;
+    margin-top: 20px;
+    border: none;
+    width: 300px;
+    background: #fff;
+    color: #555;
+    font-size: 25px; 
+    text-align: center;
     
 }
 
 .deleteAllBtn{
     padding: 10px;
-    width: 25%;
+    width: 10%;
     background: aquamarine;
     color: #555;
     float: left;
@@ -93,6 +104,7 @@ input{
     transition: 0.3s;
     border: 1px solid black;
     border-radius: 10px;
+    
 }
 
 .deleteAllBtn:hover{
@@ -101,7 +113,7 @@ input{
 
 .addBtn{
     padding: 10px;
-    width: 25%;
+    width: 10%;
     background: aquamarine;
     color: #555;
     float: right;
@@ -115,4 +127,28 @@ input{
 
 .addBtn:hover{
     background-color: lightskyblue;
+}
+
+.deleteLastBtn{
+    margin-left: 25px;
+    padding: 10px;
+    width: 10%;
+    background: aquamarine;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.deleteLastBtn:hover{
+    background-color: lightskyblue;
+}
+
+
+.spisok li.hide {
+    display: none;
 }
